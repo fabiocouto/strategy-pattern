@@ -6,7 +6,6 @@ public class Mensalidade {
 
     private BigDecimal valor;
     private Periodicidade periodicidade;
-    private Desconto desconto;
 
     public Mensalidade(BigDecimal valor, Periodicidade periodicidade) {
         this.valor = valor;
@@ -17,22 +16,13 @@ public class Mensalidade {
         return valor;
     }
 
-    public void setValor(BigDecimal valor) {
-        this.valor = valor;
-    }
-
     public Periodicidade getPeriodicidade() {
         return periodicidade;
     }
 
-    public void setPeriodicidade(Periodicidade periodicidade) {
-        this.periodicidade = periodicidade;
-    }
-
     public Desconto getDesconto() {
         DescontoFactory descontoFactory = new DescontoFactory();
-        desconto = descontoFactory.criar(this.getPeriodicidade());
-        return desconto;
+        return descontoFactory.criar(this.getPeriodicidade());
     }
 
     @Override
@@ -40,7 +30,6 @@ public class Mensalidade {
         final StringBuilder sb = new StringBuilder("Mensalidade{");
         sb.append("valor=").append(valor);
         sb.append(", periodicidade=").append(periodicidade);
-        sb.append(", desconto=").append(desconto);
         sb.append('}');
         return sb.toString();
     }
